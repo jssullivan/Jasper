@@ -12,6 +12,7 @@
         "cookie-parser" : "latest",
         "express-session" : "latest",
         "grunt-nodemon" : "latest",
-        "grunt-contrib-sass" : "latest"
+        "grunt-contrib-sass" : "latest",
+        "grunt-shell-spawn" : "latest"
     }
 }

@@ -3,27 +3,32 @@ var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var mongoose = require('mongoose');
 var methodOverride = require('method-override');
-var db = require('./config/db'); 
 var passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy;
+var localStrategy = require('passport-local').Strategy;
 var passportUser = require('./models/passportUser');
 var session = require('express-session');
+var bcrypt = require('bcrypt');
 
 var app = express();
-mongoose.connect(db.url);
+mongoose.connect('mongodb://localhost/Jasper');
 
 app.use(bodyParser.urlencoded({
   extended: true
 }));
 
 app.use(cookieParser());
-app.use(session({ secret: 'testsecret' }));
+app.use(session({ 
+	secret: 'testsecret', 
+	saveUninitialized: true, 
+	resave: true
+}));
+
 app.use(passport.initialize());
 app.use(passport.session());
 
 app.use(express.static(__dirname + '/public'));
 
-require('./passport')(passport, LocalStrategy, passportUser);
+require('./passport')(passport, localStrategy, passportUser);
 require('./routes')(app);
 
 app.listen(3000);                     

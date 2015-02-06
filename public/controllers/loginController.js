@@ -9,7 +9,7 @@ jasper.controller('loginController',['$scope', '$location', '$timeout', '$http',
 			url     : '/login',
 			data    : $.param($scope.loginForm),
 			headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
-		 })
+		})
 		.success(function(resp) {
 			if (angular.fromJson(resp).loginStatus == "success") {
 				//Redirect to the dashboard

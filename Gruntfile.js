@@ -15,11 +15,26 @@ module.exports = function(grunt) {
       dev: {
         script: 'server.js'
       }
+    },
+    shell: {
+      mongodb: {
+        command: "mongod --dbpath=db",
+        options: {
+          async: true,
+          stdout: false,
+          stderr: true,
+          failOnError: false,
+          execOptions: {
+            cwd: "."
+          }
+        }
+      }
     }
   });
 
   grunt.loadNpmTasks('grunt-contrib-sass');
+  grunt.loadNpmTasks('grunt-shell-spawn');
   grunt.loadNpmTasks('grunt-nodemon');
 
-  grunt.registerTask('default', ['sass', 'nodemon']);
+  grunt.registerTask('default', ['sass', 'shell:mongodb', 'nodemon']);
 };
