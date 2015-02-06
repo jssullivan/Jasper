@@ -1,0 +1,12 @@
+{
+    "name": "Jasper",
+    "version": "1.0.0",
+    "dependencies": {
+        "bootstrap": "latest",
+        "font-awesome": "latest",
+        "angular": "latest",
+        "angular-route": "latest",
+        "jquery" : "latest",
+        "startbootstrap-sb-admin-2" : "latest"
+    }
+}

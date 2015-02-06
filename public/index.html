@@ -1,0 +1,37 @@
+<html ng-app="jasper">
+	<head>
+	    <title>Jasper</title>
+	    
+	    <!-- Angular -->
+		<script src="libs/angular/angular.js"></script>
+		<script src="libs/angular-route/angular-route.js"></script>
+
+		<!-- jQuery -->
+		<script src="libs/jquery/dist/jquery.js"></script>
+		
+		<!-- Bootstrap -->
+		<script src="libs/bootstrap/dist/js/bootstrap.js"></script>
+	  	<link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.css">
+
+	  	<!-- Bootstrap Theme -->
+	  	<script src="libs/startbootstrap-sb-admin-2/dist/js/sb-admin-2.js"></script>
+	  	<link rel="stylesheet" href="libs/startbootstrap-sb-admin-2/dist/css/sb-admin-2.css">
+	  	<link rel="stylesheet" href="libs/startbootstrap-sb-admin-2/dist/css/timeline.css">
+
+	  	<!-- Jasper -->
+		<script src="jasper.js"></script>
+
+		<!-- Jasper Controllers-->
+		<script src="controllers/mainController.js"></script>
+		<script src="controllers/loginController.js"></script>
+
+		<!-- Route CSS -->
+		<link rel="stylesheet" href="style/login.css">
+
+		<base href="/">
+	</head>
+
+	<body ng-controller="mainController">
+		<div class="{{ pageClass }} view" ng-view></div>
+	</body>
+</html>
