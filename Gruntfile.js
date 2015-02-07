@@ -6,8 +6,8 @@ module.exports = function(grunt) {
           style: 'expanded'
         },
         files: {                         
-          'public/style/main.css': 'sass/main.scss',  
-          'public/style/login.css': 'sass/login.scss'
+          'public/style/login.css': 'sass/login.scss',  
+          'public/style/dashboard.css': 'sass/dashboard.scss'
         }
       }
     },

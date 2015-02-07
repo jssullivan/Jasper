@@ -6,8 +6,16 @@
 		<script src="libs/angular/angular.js"></script>
 		<script src="libs/angular-route/angular-route.js"></script>
 
+		 <!-- Angular UI Router -->
+		<script src="libs/angular-ui-router/release/angular-ui-router.min.js"></script>
+
 		<!-- jQuery -->
 		<script src="libs/jquery/dist/jquery.js"></script>
+
+		<!-- metisMenu -->
+		<script src="/libs/metisMenu/dist/metisMenu.min.js"></script>
+		<link rel="stylesheet" href="/libs/metisMenu/dist/metisMenu.min.css">
+		
 		
 		<!-- Bootstrap -->
 		<script src="libs/bootstrap/dist/js/bootstrap.js"></script>
@@ -27,14 +35,16 @@
 		<!-- Jasper Controllers-->
 		<script src="controllers/mainController.js"></script>
 		<script src="controllers/loginController.js"></script>
+		<script src="controllers/dashboardController.js"></script>
 
 		<!-- Route CSS -->
 		<link rel="stylesheet" href="style/login.css">
+		<link rel="stylesheet" href="style/dashboard.css">
 
-		<base href="/">
+		<base href="/index.html">
 	</head>
 
 	<body ng-controller="mainController">
-		<div class="{{ pageClass }} view" ng-view></div>
+		<div ui-view></div>
 	</body>
 </html>

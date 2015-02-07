@@ -1,0 +1,10 @@
+@import "sass/partials/text";
+
+#brandLetter {
+	color: #337ab7;
+}
+
+.dropdown-item {
+	padding: 3px 20px;
+	@include no-select();
+}
