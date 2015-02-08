@@ -37,10 +37,6 @@ jasper.controller('buildsController',['$scope', '$http', function($scope, $http)
         for (var osType in $scope.builds) {
             $scope.imageCount = $scope.imageCount + $scope.builds[osType].length;
         }
-
-        if ($scope.imageCount > 1) {
-            $scope.imageWord = "images";
-        }
     });
 
     $scope.editBuildShow = function(editBuild) {
