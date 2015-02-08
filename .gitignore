@@ -1,5 +1,5 @@
 .sass-cache/
 db/
 node_modules/
-public/libs/
-public/style/
+app/libs/
+app/style/
