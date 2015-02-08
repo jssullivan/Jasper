@@ -1,1 +1,66 @@
-builds
+<div id="addBuild" class="modal fade" tabindex="-1" role="dialog" show-model="addBuildModel">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">New Build</h4>
+            </div>
+
+            <div class="modal-body">
+                <div class="form-group">
+                  <label for="image">Image Name</label>
+                  <input type="email" class="form-control" id="image" placeholder="windows8.1_retail_pro64">
+                </div>
+             	<div class="form-group">
+ 	               <div class='input-group date' id="capturedDate">
+ 	                   <input type='text' class="form-control" />
+ 	                   <span class="input-group-addon"><span class="fa fa-calendar"></span>
+ 	                   </span>
+ 	               </div>
+ 	           </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="addBuild" ng-click="addBuildCancel()">Cancel</button>
+                <button type="button" class="btn btn-primary" ng-click="addBuildSave()">Add</button>
+            </div>
+        </div>
+	</div>
+</div>
+
+<br>
+
+<div class="row top-row">
+	<div id="info-text">5 Images Complete</div>
+	<div ng-click="addBuildShow()" class="btn" id="manage-button"><i class="fa fa-plus"></i> Add Build</div>
+</div>
+
+<div class="row">
+	<div class="panel panel-default">
+	    <div class="panel-heading"><i class="fa fa-hdd-o fa-fw"></i> Some OS Title</div>
+
+	    <div class="panel-body">
+	        <div class="table-responsive">
+	            <table class="table table-hover">
+	                <thead>
+	                    <tr>
+	                        <th>Image</th>
+	                        <th>Image Version</th>
+	                        <th>Type</th>
+	                        <th>Last Captured</th>
+	                        <th>Status</th>
+	                    </tr>
+	                </thead>
+	                <tbody>
+	                    <tr>
+	                        <td>val1</td>
+	                        <td>val2</td>
+	                        <td>val3</td>
+	                        <td>val4</td>
+	                        <td>val5</td>
+	                    </tr>
+	                </tbody>
+	            </table>
+	        </div>
+	    </div>
+	</div>
+</div>

@@ -15,6 +15,7 @@ jasper.controller('dashboardController',['$scope', '$state', '$http', function($
 	 })
 	.success(function(resp) {
 		userInfo = angular.fromJson(resp);
+		
 		$scope.name = userInfo.name;
 	});
 }]);

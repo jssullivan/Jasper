@@ -1,16 +1,7 @@
 var jasper = angular.module('jasper', ['ngRoute', 'ui.router']);
 
-jasper.config(['$routeProvider','$locationProvider', '$stateProvider', '$urlRouterProvider', function($routeProvider, $locationProvider, $stateProvider, $urlRouterProvider) {
-	/*$routeProvider
-		.when('/', {
-			templateUrl : 'routes/login.html',
-			controller  : 'loginController'
-		})
-		.when('/dash', {
-			templateUrl : 'routes/dashboard.html',
-			controller  : 'dashboardController'
-		});*/
-	$urlRouterProvider.otherwise("");
+jasper.config(['$locationProvider', '$stateProvider', '$urlRouterProvider', function($locationProvider, $stateProvider, $urlRouterProvider) {
+	 $urlRouterProvider.otherwise("");
 
 	$stateProvider
 		.state('index', {
@@ -29,7 +20,8 @@ jasper.config(['$routeProvider','$locationProvider', '$stateProvider', '$urlRout
 	    })
 	    .state('manage.builds', {
 	      url: "/builds",
-	      templateUrl: "routes/internal/builds.html"
+	      templateUrl: "routes/internal/builds.html",
+	      controller : 'buildsController'
 	    })
 	    .state('manage.todos', {
 	      url: "/todos",

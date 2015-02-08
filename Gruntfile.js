@@ -7,7 +7,8 @@ module.exports = function(grunt) {
         },
         files: {                         
           'public/style/login.css': 'sass/login.scss',  
-          'public/style/dashboard.css': 'sass/dashboard.scss'
+          'public/style/dashboard.css': 'sass/dashboard.scss',
+          'public/style/builds.css': 'sass/builds.scss'
         }
       }
     },
