@@ -1,0 +1,33 @@
+#loginButton {
+  width: 100%;
+  outline: 0 !important;
+  background-color: #337ab7;
+  color: #FFF;
+}
+
+#loginContainer {
+  padding-right: 50px;
+  padding-left: 50px;
+  margin-top: 100px;
+}
+
+#loginLogo {
+  font-weight: 100;
+  margin-bottom: 5px;
+  font-size: 40px;
+  color: #666;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: default;
+  margin-left: 1px;
+}
+
+#loginLogoJ {
+  color: #337ab7;
+}
+
+/*# sourceMappingURL=login.css.map */

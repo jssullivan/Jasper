@@ -1,0 +1,57 @@
+<html ng-app="jasper">
+	<head>
+	    <title>Jasper</title>
+	    
+	    <!-- Angular -->
+		<script src="libs/angular/angular.js"></script>
+		<script src="libs/angular-route/angular-route.js"></script>
+
+		 <!-- Angular UI Router -->
+		<script src="libs/angular-ui-router/release/angular-ui-router.min.js"></script>
+
+		<!-- jQuery -->
+		<script src="libs/jquery/dist/jquery.js"></script>
+
+		<!-- metisMenu -->
+		<script src="/libs/metisMenu/dist/metisMenu.min.js"></script>
+		<link rel="stylesheet" href="/libs/metisMenu/dist/metisMenu.min.css">
+		
+		<!-- Bootstrap -->
+		<script src="libs/bootstrap/dist/js/bootstrap.js"></script>
+	  	<link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.css">
+
+	  	<!-- Bootstrap Theme -->
+	  	<script src="libs/startbootstrap-sb-admin-2/dist/js/sb-admin-2.js"></script>
+	  	<link rel="stylesheet" href="libs/startbootstrap-sb-admin-2/dist/css/sb-admin-2.css">
+	  	<link rel="stylesheet" href="libs/startbootstrap-sb-admin-2/dist/css/timeline.css">
+
+	  	<!-- Jasper -->
+		<script src="jasper.js"></script>
+
+		<!-- FontAwesome -->
+		<link rel="stylesheet" href="libs/font-awesome/css/font-awesome.css">
+
+		<!-- Jasper Controllers-->
+		<script src="controllers/mainController.js"></script>
+		<script src="controllers/loginController.js"></script>
+		<script src="controllers/dashboardController.js"></script>
+		<script src="controllers/manageController.js"></script>
+		<script src="controllers/buildsController.js"></script>
+
+		<!-- Route CSS -->
+		<link rel="stylesheet" href="style/login.css">
+		<link rel="stylesheet" href="style/dashboard.css">
+		<link rel="stylesheet" href="style/builds.css">
+
+		<base href="/index.html">
+
+		<!-- Date Picker -->
+		<script type="text/javascript" src="libs/moment/min/moment.min.js"></script>
+		<script type="text/javascript" src="libs/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+		<link rel="stylesheet" href="libs/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css"/>
+	</head>
+
+	<body ng-controller="mainController">
+		<div ui-view></div>
+	</body>
+</html>

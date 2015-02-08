@@ -1,0 +1,185 @@
+<div ng-controller="buildsController">
+	<div id="addBuild" class="modal fade" tabindex="-1" role="dialog" show-model="addBuildModel">
+	    <div class="modal-dialog">
+	        <div class="modal-content">
+	            <div class="modal-header">
+	                <h4 class="modal-title">New Build</h4>
+	            </div>
+
+	            <div class="modal-body">
+
+	                <div class="form-group">
+	                  <label>Image Name</label>
+	                  <input class="form-control" placeholder="windows8.1_retail_pro64" ng-model="newBuild.name">
+	                </div>
+
+	             	<div class="form-group">
+	             		<label for="image">Capture Date</label>
+	 	               	<div class='input-group date' id="capturedDate" date-picker>
+	 	                   <input type='text' class="form-control" date-picker-model ng-model="newBuild.date" placeholder="02/12/2015 9:01 AM"/>
+	 	                   <span class="input-group-addon"><span class="fa fa-calendar"></span>
+	 	                   </span>
+	 	               	</div>
+	 	           </div>
+
+	 	         	<div class="form-group">
+		           		<label>OS Type</label><br>
+	 	            	<select ng-model="newBuild.os" class="form-control">
+	 	              		<option ng-repeat="osName in os">{{ osName }}</option>
+	 	             	</select>
+ 	             	</div>
+
+ 	             	<div class="form-group">
+	 	             	<label>License Type</label><br>
+	 	            	<select ng-model="newBuild.license" class="form-control">
+	 	              		<option ng-repeat="licName in lics">{{ licName }}</option>
+	 	             	</select>
+ 	             	</div>
+
+ 	             	<div class="form-group">
+	 	             	<label>System Type</label><br>
+	 	            	<select ng-model="newBuild.type" class="form-control">
+	 	              		<option ng-repeat="type in sys">{{ type }}</option>
+	 	             	</select>
+ 	             	</div>
+	 	           
+	            </div>
+
+	            <div class="modal-footer">
+	                <button type="button" class="btn btn-default" ng-click="addBuildCancel()">Cancel</button>
+	                <button type="button" class="btn btn-primary" ng-click="addBuildSave()">Add</button>
+	            </div>
+	        </div>
+		</div>
+	</div>
+
+	<div id="editBuild" class="modal fade" tabindex="-1" role="dialog" show-model="editBuildModel">
+	    <div class="modal-dialog">
+	        <div class="modal-content">
+	            <div class="modal-header">
+	                <h4 class="modal-title">Edit Build</h4>
+	            </div>
+
+	            <div class="modal-body">
+
+	                <div class="form-group">
+	                  <label>Image Name</label>
+	                  <input class="form-control" placeholder="windows8.1_retail_pro64" ng-model="editBuild.name">
+	                </div>
+
+	             	<div class="form-group">
+	             		<label for="image">Capture Date</label>
+	 	               	<div class='input-group date' id="capturedDate" date-picker>
+	 	                   <input type='text' class="form-control" date-picker-model ng-model="editBuild.date" placeholder="02/12/2015 9:01 AM"/>
+	 	                   <span class="input-group-addon"><span class="fa fa-calendar"></span>
+	 	                   </span>
+	 	               	</div>
+	 	           </div>
+
+	 	         	<div class="form-group">
+		           		<label>OS Type</label><br>
+	 	            	<select ng-model="editBuild.os" class="form-control">
+	 	              		<option ng-repeat="osName in os">{{ osName }}</option>
+	 	             	</select>
+ 	             	</div>
+
+ 	             	<div class="form-group">
+	 	             	<label>License Type</label><br>
+	 	            	<select ng-model="editBuild.license" class="form-control">
+	 	              		<option ng-repeat="licName in lics">{{ licName }}</option>
+	 	             	</select>
+ 	             	</div>
+
+ 	             	<div class="form-group">
+	 	             	<label>Status</label><br>
+	 	            	<select ng-model="editBuild.status" class="form-control">
+	 	              		<option ng-repeat="status in statuses">{{ status }}</option>
+	 	             	</select>
+ 	             	</div>
+
+ 	             	<div class="form-group">
+	 	             	<label>System Type</label><br>
+	 	            	<select ng-model="editBuild.type" class="form-control">
+	 	              		<option ng-repeat="type in sys">{{ type }}</option>
+	 	             	</select>
+ 	             	</div>
+	 	           
+	            </div>
+
+	            <div class="modal-footer">
+	            	<button type="button" class="btn btn-danger btn-left" ng-click="editBuildDelete()">Delete</button>
+	                <button type="button" class="btn btn-default" ng-click="editBuildCancel()">Cancel</button>
+	                <button type="button" class="btn btn-primary" ng-click="editBuildSave()">Save</button>
+	            </div>
+	        </div>
+		</div>
+	</div>
+
+	<div id="addRevision" class="modal fade" tabindex="-1" role="dialog" show-model="addRevisionModel">
+	    <div class="modal-dialog">
+	        <div class="modal-content">
+	            <div class="modal-header">
+	                <h4 class="modal-title">Revision {{ newRevision.revision }}</h4>
+	            </div>
+
+	            <div class="modal-body">
+
+	                <div class="form-group">
+	                  <label>Revision Notes</label>
+	                  <textarea class="form-control" placeholder="Windows and Adobe updates." ng-model="newRevision.changes"></textarea>
+	                </div>
+	 	           
+	            </div>
+
+	            <div class="modal-footer">
+	                <button type="button" class="btn btn-default" ng-click="addRevisionCancel()">Cancel</button>
+	                <button type="button" class="btn btn-primary" ng-click="addRevisionSave()">Save</button>
+	            </div>
+	        </div>
+		</div>
+	</div>
+
+	<br>
+
+	<div class="row top-row">
+		<div class="timeline-heading top-left" ng-show="selectedBuild.show">
+            <h4 class="timeline-title">{{ selectedBuild.title }}</h4>
+            <p><small class="text-muted"><i class="fa fa-cogs"></i>{{ selectedBuild.changeLog }}</small> 
+            </p>
+        </div>
+
+		<div ng-click="addBuildShow()" class="btn btn-primary manage-button-primary"><i class="fa fa-plus"></i> Add Build</div>
+		<div ng-click="addRevisionShow()" class="btn btn-success manage-button" ng-show="selectedBuild.show"><i class="fa fa-plus"></i> Add Revision</div>
+	</div>
+
+	<div class="row" ng-repeat="(key, value) in builds">
+		<div class="panel panel-default">
+		    <div class="panel-heading"><i class="fa fa-hdd-o fa-fw"></i> {{ key }}</div>
+
+		    <div class="panel-body">
+	            <table class="table table-hover bottomless-table">
+	                <thead>
+	                    <tr>
+	                        <th>Image</th>
+	                        <th>Image Version</th>
+	                        <th>Type</th>
+	                        <th>System</th>
+	                        <th>Last Captured</th>
+	                        <th>Status</th>
+	                    </tr>
+	                </thead>
+	                <tbody>
+	                    <tr ng-repeat="build in value" class="selectable">
+	                        <td class="col-md-2" ng-dblclick="editBuildShow(build)" sglclick="showDetails(build)">{{ build.imageName }}</td>
+	                        <td class="col-md-2" ng-dblclick="editBuildShow(build)" sglclick="showDetails(build)">{{ build.imageOSVersion }}</td>
+	                        <td class="col-md-2" ng-dblclick="editBuildShow(build)" sglclick="showDetails(build)">{{ build.imageLicense }}</td>
+	                        <td class="col-md-2" ng-dblclick="editBuildShow(build)" sglclick="showDetails(build)"><div class="buildsPill {{ build.imageType }}">{{ build.imageType }}</div></td>
+	                        <td class="col-md-2" ng-dblclick="editBuildShow(build)" sglclick="showDetails(build)">{{ build.lastCaptured }}</td>
+	                        <td class="col-md-2" ng-dblclick="editBuildShow(build)" sglclick="showDetails(build)"><div class="buildsPill {{ build.imageStatus }}">{{ build.imageStatus }}</div></td>
+	                    </tr>
+	                </tbody>
+	            </table>
+		    </div>
+		</div>
+	</div>
+</div>

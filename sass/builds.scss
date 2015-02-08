@@ -1,9 +1,76 @@
-#manage-button {
+@import "sass/partials/text";
+
+.manage-button-primary {
 	float: right;
-	background-color: #337ab7;
-	color: #FFF;
+}
+
+.manage-button {
+	float: right;
+	margin-right: 10px;
+}
+
+.top-left {
+	float: left;
 }
 
 #info-text {
 	float: left;
+}
+
+.selectable {
+	@include no-select();
+	cursor: pointer;
+}
+
+//Table Pills
+
+.buildsPill {
+	display: inline-block;
+	border-radius: 3px;
+	color: #FFF;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 1px;
+	padding-bottom: 1px;	
+}
+
+.Both {
+	background-color: #4CAF50;
+	border-color: #388E3C;
+}
+
+.Legacy {
+	background-color: #8BC34A;
+	border-color: #689F38;
+}
+
+.EFI {
+	background-color: #009688;
+	border-color: #00796B;
+
+}
+
+.New {
+	background-color: #5bc0de;
+	border-color: #46b8da;
+}
+
+.Testing {
+	background-color: #f0ad4e;
+	border-color: #eea236;
+}
+
+.Repair {
+	background-color: #f0ad4e;
+	border-color: #eea236;
+}
+
+.Broken {
+	background-color: #d9534f;
+	border-color: #d43f3a;
+}
+
+.Working {
+	background-color: #5cb85c;
+	border-color: #4cae4c;
 }

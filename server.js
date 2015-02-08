@@ -26,7 +26,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/app'));
 
 require('./passport')(passport, localStrategy, passportUser);
 require('./routes')(app);

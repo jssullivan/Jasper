@@ -10,6 +10,7 @@
         "startbootstrap-sb-admin-2" : "latest",
         "angular-ui-router" : "latest",
         "metisMenu" : "latest",
-        "eonasdan-bootstrap-datetimepicker" : "latest"
+        "eonasdan-bootstrap-datetimepicker" : "latest",
+        "bootstrap-select" : "latest"
     }
 }

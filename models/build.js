@@ -6,5 +6,6 @@ module.exports = mongoose.model('Build', {
     imageType : {type : String, default: ''},
     lastCaptured : {type : String, default: ''},
     imageStatus : {type : String, default: ''},
-    imageDescription : {type : String, default: ''}
+    imageDescription : {type : String, default: ''},
+    imageLicense : {type : String, default: ''}
 });
