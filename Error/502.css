@@ -1,0 +1,50 @@
+#loginLogoJ {
+  color: #337ab7;
+}
+#loginLogo {
+  font-weight: 100;
+  margin-bottom: 5px;
+  font-size: 35px;
+  color: #666;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: default;
+  margin-left: 1px;
+}
+#sorryText {
+  margin-bottom: 5px;
+  font-size: 20px;
+  margin-top: 30px;
+  color: #666;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: default;
+  margin-left: 1px;
+}
+#minText{
+  margin-bottom: 5px;
+  font-size: 10px;
+  margin-top: 20px;
+  color: #666;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: default;
+  margin-left: 1px;
+}
+#center{
+  text-align: center;
+  position: relative;
+  top: 30%;
+}
