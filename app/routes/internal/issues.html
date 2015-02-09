@@ -1,1 +1,145 @@
-issues
+<div ng-controller="issuesController">
+	<div id="newIssue" class="modal fade" tabindex="-1" role="dialog" show-model="newIssueModel">
+	    <div class="modal-dialog">
+	        <div class="modal-content">
+	            <div class="modal-header">
+	                <h4 class="modal-title">New Issue</h4>
+	            </div>
+
+	            <div class="modal-body">
+	                <div class="form-group">
+	                  <label>Issue</label>
+	                  <input class="form-control" placeholder="Something broke..." ng-model="newIssue.title">
+	                </div>
+
+	 	         	<div class="form-group">
+		           		<label>Assign To</label><br>
+	 	            	<select ng-model="newIssue.assignTo" class="form-control">
+	 	              		<option ng-repeat="name in assignees">{{ name }}</option>
+	 	             	</select>
+ 	             	</div>
+
+ 	             	<div class="form-group">
+		           		<label>Priority</label><br>
+	 	            	<select ng-model="newIssue.priority" class="form-control">
+	 	              		<option ng-repeat="pri in priorities">{{ pri }}</option>
+	 	             	</select>
+ 	             	</div>
+
+ 	             	<div class="form-group">
+	                  <label>Issue Description</label>
+	                  <textarea class="form-control" placeholder="Something in the Windows image broke." ng-model="newIssue.description"></textarea>
+	                </div>
+	            </div>
+
+	            <div class="modal-footer">
+	                <button type="button" class="btn btn-default" ng-click="newIssueCancel()">Cancel</button>
+	                <button type="button" class="btn btn-primary" ng-click="newIssueSave()">Save</button>
+	            </div>
+	        </div>
+		</div>
+	</div>
+
+	<div id="editIssue" class="modal fade" tabindex="-1" role="dialog" show-model="editIssueModel">
+	    <div class="modal-dialog">
+	        <div class="modal-content">
+	            <div class="modal-header">
+	                <h4 class="modal-title">{{ editIssue.title }}</h4>
+	            </div>
+
+	            <div class="modal-body">
+	 	         	<div class="form-group">
+		           		<label>Assign To</label><br>
+	 	            	<select ng-model="editIssue.assignTo" class="form-control">
+	 	              		<option ng-repeat="name in assignees">{{ name }}</option>
+	 	             	</select>
+ 	             	</div>
+
+ 	             	<div class="form-group">
+		           		<label>Status</label><br>
+	 	            	<select ng-model="editIssue.status" class="form-control">
+	 	              		<option ng-repeat="stat in statuses">{{ stat }}</option>
+	 	             	</select>
+ 	             	</div>
+
+ 	             	<div class="form-group">
+		           		<label>Priority</label><br>
+	 	            	<select ng-model="editIssue.priority" class="form-control">
+	 	              		<option ng-repeat="pri in priorities">{{ pri }}</option>
+	 	             	</select>
+ 	             	</div>
+
+ 	             	<div class="form-group">
+	                  <label>Issue Description</label>
+	                  <textarea class="form-control" placeholder="Something in the Windows image broke." ng-model="editIssue.description"></textarea>
+	                </div>
+	            </div>
+
+	            <div class="modal-footer">
+	            	<button type="button" class="btn btn-danger btn-left" ng-click="editIssueDelete()">Delete</button>
+	                <button type="button" class="btn btn-default" ng-click="editIssueCancel()">Cancel</button>
+	                <button type="button" class="btn btn-primary" ng-click="editIssueSave()">Save</button>
+	            </div>
+	        </div>
+		</div>
+	</div>
+
+	<br>
+
+	<div class="row top-row">
+		<div ng-click="newIssueShow()" class="btn btn-primary manage-button-primary"><i class="fa fa-plus"></i> New Issue</div>
+	</div>
+
+	<div class="row" ng-if="issuesOpen != null">
+		<div class="panel panel-default">
+		    <div class="panel-heading"><i class="fa fa-exclamation-triangle fa-fw"></i>Open Issues</div>
+
+		    <div class="panel-body">
+	            <table class="table table-hover bottomless-table">
+	                <thead>
+	                    <tr>
+	                        <th>Issue</th>
+	                        <th>Assignee</th>
+	                        <th>Priority</th>
+	                        <th>Status</th>
+	                    </tr>
+	                </thead>
+	                <tbody>
+	                    <tr ng-repeat="issue in issuesOpen" class="selectable">
+	                       <td class="col-md-2" ng-dblclick="editIssueShow(issue)" sglclick="showDetails(issue)">{{ issue.title }}</td>
+	                       <td class="col-md-2" ng-dblclick="editIssueShow(issue)" sglclick="showDetails(issue)">{{ issue.assignTo }}</td>
+	                        <td class="col-md-2" ng-dblclick="editIssueShow(issue)" sglclick="showDetails(issue)">{{ issue.priority }}</td>
+	                        <td class="col-md-2" ng-dblclick="editIssueShow(issue)" sglclick="showDetails(issue)"><div class="buildsPill {{ issue.status }}">{{ issue.status }}</div></td>
+	                    </tr>
+	                </tbody>
+	            </table>
+		    </div>
+		</div>
+	</div>
+	<div class="row" >
+		<div class="panel panel-default" ng-if="issuesClosed != null">
+		    <div class="panel-heading"><i class="fa fa-exclamation-triangle fa-fw"></i>Past Issues</div>
+
+		    <div class="panel-body">
+	            <table class="table table-hover bottomless-table">
+	                <thead>
+	                    <tr>
+	                        <th>Issue</th>
+	                        <th>Assignee</th>
+	                        <th>Priority</th>
+	                        <th>Status</th>
+	                    </tr>
+	                </thead>
+	                <tbody>
+	                    <tr ng-repeat="issue in issuesClosed" class="selectable">
+	                       <td class="col-md-2" ng-dblclick="editIssueShow(issue)" sglclick="showDetails(issue)">{{ issue.title }}</td>
+	                       <td class="col-md-2" ng-dblclick="editIssueShow(issue)" sglclick="showDetails(issue)">{{ issue.assignTo }}</td>
+	                        <td class="col-md-2" ng-dblclick="editIssueShow(issue)" sglclick="showDetails(issue)">{{ issue.priority }}</td>
+	                        <td class="col-md-2" ng-dblclick="editIssueShow(issue)" sglclick="showDetails(issue)"><div class="buildsPill {{ issue.status }}">{{ issue.status }}</div></td>
+	                    </tr>
+	                </tbody>
+	            </table>
+		    </div>
+		</div>
+	</div>
+</div>

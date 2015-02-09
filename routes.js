@@ -1,5 +1,7 @@
 var passport = require('passport');
 var Build = require('./models/build');
+var IssueReport = require('./models/issue.js');
+var PassportUser = require('./models/passportUser');
 var BuildRevision = require('./models/buildRevision');
 
 module.exports = function(app) {
@@ -145,6 +147,76 @@ module.exports = function(app) {
 
    			res.send(buildsList);
    		});
+   	});
+
+   	//Get users to assign issues to
+   	app.get('/issues/assignees', requireAuth, function(req, res) {
+   		PassportUser.find({}, function(err, users) {
+   			var assignees = [];
+
+   			users.forEach(function(user) {
+   				assignees.push(user.name);
+   			});
+
+   			res.send(assignees);
+   		});
+   	});
+   	
+   	//Add or update an issue
+   	app.post('/issues/save', requireAuth, function(req, res) {
+   		IssueReport.findOne({_id : req.body.id}, function(err, issue) {
+   			var saveIssue;
+
+   			if (issue == null) {
+   				saveIssue = new IssueReport({
+		   			title: req.body.title,
+		   			description: req.body.description,
+		   			priority: req.body.priority,
+		   			assignTo: req.body.assignTo,
+		   			status: req.body.status
+		   		});
+   			} else {
+		   		saveIssue = new IssueReport({
+		   			_id: req.body.id,
+		   			title: req.body.title,
+		   			description: req.body.description,
+		   			priority: req.body.priority,
+		   			assignTo: req.body.assignTo,
+		   			status: req.body.status
+		   		});
+   			}
+
+   			var objIssue = saveIssue.toObject();
+   			delete objIssue._id;
+
+   			IssueReport.update({_id: saveIssue.id}, objIssue, {upsert: true}, function(err){return err});
+
+   			res.send({ status: 'success'});
+   		});
+   	});
+
+   	//Send the issues
+   	app.get('/issues/list', requireAuth, function(req, res) {
+   		IssueReport.find({}, function(err, issues) {
+   			var issuesList = [];
+
+   			issues.forEach(function(issue) {
+   				issuesList.push(issue.toObject());
+   			});
+
+   			res.send(issuesList);
+   		});
+   	});
+
+   	//Delete an issue
+   	app.post('/issues/delete', requireAuth, function(req, res) {
+   		IssueReport.find({_id : req.body.id}, function(err, issues) {
+   			issues.forEach(function(issue) {
+   				issue.remove();
+   			});
+   		});
+
+   		res.send({ status: 'success'});
    	});
 
 	//Catch all 404's

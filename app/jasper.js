@@ -29,7 +29,8 @@ jasper.config(['$locationProvider', '$stateProvider', '$urlRouterProvider', func
 	    })
 	    .state('manage.issues', {
 	      url: "/issues",
-	      templateUrl: "routes/internal/issues.html"
+	      templateUrl: "routes/internal/issues.html",
+	      controller: "issuesController"
 	    });
 		
 		$locationProvider.html5Mode(true);
